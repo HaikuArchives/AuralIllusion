@@ -1,0 +1,132 @@
+Aural illusion free 
+
+Aural illusion v4.0 is now open source. 
+This is not due to Be's troubles but has been planned for quite some time. 
+
+Aural illusion started on the Amiga as a "license wear" product sold by Seasoft in the UK.  It got to version 2 then I worte a Modular Synthesizer called Aural Synthetica. 
+
+I then went back and decided to rewrite Aural illusion v3.0 form scratch as v2.0 was only an enhanced v1.0 and it was the first large program I'd ever writtern and was as such full of mistakes. 
+
+v3.0 progressed on and off for a long time but was eventually cancelled due to the Amigas demise - deja vu! 
+
+I started on Aural illusion for BeOS after Han Speijer then of Be Europe had sent me a copy of BeOS to look at.  I was hooked immediatly and decided to write Ai for BeOS. 
+
+It soon became apparant a major rework would be needed for it to work on BeOS and I was adding many more new effects so the version number was bumped up one. 
+
+However all this time I had been working full time on this and I then got a job in Holland, a country I am still in today (peviously I was in Northern Ireland). Working full time in development kills any urge to program at home flat so Ai fell by the wayside and no work was done on it except for one day just over a year ago.  I planned to finish it then I was going to get help but eventually I decided to go open source. 
+
+This program is unfinished and probably doesn't need that much work to complete it, but the effects are pretty much complete and there is no point them sitting on my hard disc doing nothing when they could be in use somewhere. 
+
+The program being an Amiga port is showing it's age, the things the Be GUI and media kit can do are pretty amazing but I'm not a C++ programmer and didn't undrstand OOP at the time so I just got the thing to work. This too is full of "errors" (i.e. bad programming - not bugs).  I would like to see it completed but I don't see much point going beyond that with the existing code. 
+
+The effects however are the important parts.  Ai is an audio effects program first and foremost and these are working and working well.  The code is in C and can be reused across other projects, free or commercial (see license for details). 
+
+I am very proud of the work I did on the effects, I wrote them all with no knowlege of audio programming whatsoever, no books, no examples, no nothing. Well, I did have a couple of guitar effects boxes to listen to and I sometimes read Sound on Sound which explained some effects (but not how to program them). Reinventing wheels is not a good idea but can be a very useful skill if you want to understand something, invent something new or (like me) had nothing to go by. 
+
+The Licenses (one for Effects, one for the rest) are based on the Apache license so you  can pretty much do what you like. 
+
+------------------------------------------------------------------------------------------------- 
+
+NOTES: 
+THIS IS INCOMPLETE SOFTWARE 
+
+DOES NOT WORK: 
+-------------------------- 
+- PLAY (nothing) 
+- RECORD (nothing) 
+- LOAD (RAW 16 PC & RAW 16 Mac/Amiga works sorta). 
+- LOAD "As is" option doesn't work 
+- SAVE (RAW 16 PC  & RAW 16 Mac/Amiga also works sorta but very buggy).  Use 
+BAMBAM to listen to sound. 
+- SAVE "As is" option doesn't work 
+- Attractor Display (works but change the window type to a bitmap). 
+- CUT/COPY/PASTE (nope, nothing here). 
+- powered compress, powere expand (neither present - ask me) 
+- Progress bar does not work for all functions. 
+- Zone display has a bug. 
+- Range selection has a weird bug, sometimes. 
+- GUI could do with some work, some parts confusing 
+- Some bugs in the Effects 
+
+WHAT DOES WORK 
+----------------------------- 
+- Most editing functions. 
+- Most effects. 
+- UNDO but it's cheap and nasty. 
+- Scale, but the button is not clearly marked. 
+- Docs, but they are *years* out of date! 
+
+------------------------------------------------------------------------------------------------- 
+
+How to use it: 
+
+You have to select memory before 
+
+LOAD 
+-------- 
+1) Select a range in the Sample display window 
+2) Select File/Open... 
+3) Left is what the sample is, Right is what you want 
+   You can load stereo to mono and vice versa. 
+   if you want to confuse it you can select stereo stereo and then load a mono 
+   sample and it will be treated as if it were stereo which can sound strange. 
+4) Select RAW 16 PC (Many samples are header + raw i.e. many .WAV) 
+5) Select "Load", then pick a sample 
+
+Don't load a compressed WAV as Ai cannot understand compression and will think it's just a sample, you will think it's just noise. 
+
+SAVE 
+-------- 
+1) Select a range in the Sample display window 
+2) Select File/Save As... 
+3) Left is what the sample is, Right is what you want 
+   You can save stereo to mono and vice versa. 
+4) Select RAW 16 PC 
+5) Select "Save", then, THIS IS WHERE THINGS GO STRANGE. 
+   Saving does not work correctly as sometimes the same is not saved 
+   or if it is it will be saved under a bizzare name, almost certianly not 
+   what you typed in.  You can try saving over something but it might "miss" 
+   and save it as something else. 
+
+If it gets saved it will be in RAW format and most things can't read this these days some versions of BAMBAM can however read RAW PC stereo files. 
+
+Zone operations 
+----------------------- 
+Zones are ways of copying and pasting without using much if any scratch memory. first select a range then press "Set Zone".  now just click the mouse somewhere, anywhere will do. 
+
+Zone Over  - copies the current zone over the destination 
+Zone Into - copies the current zone to the destination and moves the resat along. 
+Zone Move - moves the zone to the destination. 
+
+Zones preserves stereo information so you can select on the left and move it to the right. 
+You can select on the left then select stereo and it will copy to both sides. 
+
+The GO button 
+--------------------- 
+The Edit window indicates the currect operation selected beside the GO button. If GO on the edit window is selected the displayed operation is executed. If the effect widow displys a different operation then the edit window select "Set". 
+
+Effects 
+----------- 
+Select an effect 
+Press GO on Effect window or on the Edit window and the selected effect will be executed, 
+unless the range is big or you have a really slow computer this will probably not take much time! You can change the parameters displayed, you can also get the defaults by selecting "Default Values" 
+
+Effects Types 
+-------------------- 
+Standard FX 
+   The normal effects you expect to find. 
+Complex FX 
+   Slow or complex effects, loads of mathematical effects which distort horribly here. 
+Manips 1 
+   Simple effects, effects with few options and various miscellaneous effects 
+Manips 2 
+   Various miscellaneous and completely bizarre effects, The last 5 make noise sounds. 
+Dual Manips 
+   Effects which require 2 inputs, the first input is a Zone the second is a range. 
+   The result will usually be placed into the range but sometimes outside depending on the effect. 
+Stereo FX 
+   Effects which have inputs from both sides and produce results on both sides 
+   i.e. Stereo Reverb will create reverb on the left from sounds on the right. 
+
+
+Now, GO MAKE SOME NOISE!
