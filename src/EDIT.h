@@ -1,4 +1,4 @@
-// EDIT.h 
+// EDIT.h
 // Copyright (c) Blachford Technology 1999
 // 28/4/99
 
@@ -7,6 +7,13 @@
 
 #include <Window.h>
 #include <View.h>
+
+// Predefinitions
+class BButton;
+class BCheckBox;
+class BStringView;
+class BRadioButton;
+class BSlider;
 
 class EDIT : public BWindow
 {
@@ -18,10 +25,10 @@ public:
 	void MessageReceived(BMessage *message);
 	void Drawdrawbar(int16 mode, int16 draw1, int16 draw2, int16 draw3, int16 draw4, int16 draw5);
 	//virtual void Draw( BRect updateRect );
-					
+
 	BButton* go;
 	BButton* undo;
-	
+
 	BButton* zoomin;
 	BButton* zoomout;
 	BButton* start;
@@ -30,10 +37,10 @@ public:
 	BButton* forward;
 	BButton* fastforward;
 	BButton* end;
-	
+
 	BCheckBox* draw;
 	BCheckBox* loop;
-	
+
 	BStringView* messageboxstring;
 
 	BButton* cut;
@@ -73,7 +80,7 @@ public:
 	BStringView* cusrtext;
 	BStringView* rangetext;
 	BStringView* zonetext;
-	
+
 	BStringView* cusrvaltext;
 	BStringView* rangevaltext;
 	BStringView* zonevaltext;
@@ -86,7 +93,7 @@ class ProgressView: public BView
 
 	ProgressView( BRect frame );
 	virtual ~ProgressView();
-	
+
 	virtual void Draw( BRect updateRect );
 };
 

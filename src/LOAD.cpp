@@ -1,4 +1,4 @@
-// LOAD.cpp 
+// LOAD.cpp
 // Copyright (c) Blachford Technology 1999
 // 28/4/99
 
@@ -149,7 +149,7 @@ LOAD::LOAD(void)
 
 	loadadd1e = new BRadioButton(BRect(0,56,75,68),"loadadd1e","As is",		new BMessage(LOAD_RADIOA5));
 	loadradio1->AddChild(loadadd1e);
-	
+
 	loadradio1->SetViewColor(216,216,216);
 	loadview->AddChild(loadradio1);
 
@@ -189,7 +189,7 @@ LOAD::LOAD(void)
 	// Loader / Saver List
 	loadpick = new BListView(BRect(246,3,399,123),"loadpick",B_SINGLE_SELECTION_LIST,B_WILL_DRAW);
 	loadpick->SetSelectionMessage(new BMessage(LOAD_PICK));
-	
+
 	loadpickparent = new BScrollView("loadpickparent",loadpick,0,0,false,true,B_PLAIN_BORDER);
 	loadview->AddChild(loadpickparent);
 
@@ -233,7 +233,7 @@ LOAD::LOAD(void)
 
 	loadtextview->SetViewColor(0,0,0); // background to black
 	loadview->AddChild(loadtextview);
-	
+
 	// set the view color to gray, add the view
 	loadview->SetViewColor(216,216,216);
 	AddChild(loadview);
@@ -249,10 +249,10 @@ LOAD::LOAD(void)
 	loadinputS1 = 5;
 	loadinputS2 = 5;
 	loadinputS3 = 2;
-	
+
 	// show the window
 	Show();
-	
+
 	Lock();
 	Drawlist(1,0);	// default to load
 
@@ -451,7 +451,7 @@ if (incount >= 9)	//	Blank
 	loadvals[0][incount][1] = 16;	//	bits
 	loadvals[0][incount][2] = 0;	//	translate
 	}
-	
+
 }
 
 // ****************************************************************************************************
@@ -702,7 +702,7 @@ static char numbertxt[5];
 
 Lock();
 
-// Remember clicking any of these will 
+// Remember clicking any of these will
 // reset the current selected LOADER / SAVER
 // in the EDIT window
 
@@ -714,7 +714,7 @@ if (mess_no == 1)  // RadioA1
  		}
  	else loadinputS1=1;
  	}
- 	
+
 if (mess_no == 2) // RadioA2
  	{
  	if (loadtype == 0)
@@ -750,7 +750,7 @@ if (mess_no == 5)  // RadioA5
  		}
  	else loadinputS1=5;
  	}
- 	
+
 if (mess_no == 6) // RadioB1
  	{
  	if (loadtype == 0)
@@ -959,7 +959,7 @@ void LOAD::MessageReceived(BMessage *message)
 	}
 }
 
-	
+
 // ***************************************************************************************************
 // ***************************************************************************************************
 // ***************************************************************************************************
@@ -1119,7 +1119,7 @@ bufferstart = (void *)bufferpoint;
 len = (size_t)131072;
 
 // ***************************************************************************************************
-/*
+
 status_t err;
 entry_ref ref;
 BMediaFile *mediaFile;
@@ -1167,7 +1167,7 @@ else if (err == B_OK)
 			}
 		else
 			{  // == track
-			err = track->EncodedFormat(&format);//			get the encoded format 
+			err = track->EncodedFormat(&format);//			get the encoded format
 			if (err != B_OK)
 				{
 				sprintf(loadtexttest[2],"encode error %s",strerror(err));
@@ -1180,11 +1180,11 @@ else if (err == B_OK)
 					{
 					audtrack = track;
 					if (audtrack == NULL)
-						{ 
+						{
 						sprintf(loadtexttest[2],"no audio tracks");
 						loadtextgoc->SetText(loadtexttest[2]);
 						}
-					else 
+					else
 						{
 						format.type = B_MEDIA_RAW_AUDIO;
 						err = audtrack->DecodedFormat(&format);	// this is the foul up!
@@ -1197,7 +1197,7 @@ else if (err == B_OK)
 //						sprintf(loadtexttest[0],"audtrack found, numtracks=%d  framesize=%d",numTracks,smallframesize);
 //						loadtextgo->SetText(loadtexttest[0]);
 
-						lo_appoint = (int16 *)sound_buffer;	
+						lo_appoint = (int16 *)sound_buffer;
 						numFrames = audtrack->CountFrames();
 						smallnumFrames=(int32)numFrames;
 						if (numFrames > 0)
@@ -1209,7 +1209,7 @@ else if (err == B_OK)
 //							{
 //							*(loadpoint+j)	= *(lo_appoint+j);
 //							}
-	
+
 						for (j = 0; j < numFrames; j+=framecount)
 							{
 							err = audtrack->ReadFrames(sound_buffer, &framecount, &mh);
@@ -1270,9 +1270,9 @@ if (sound_buffer) free(sound_buffer);
 
 delete mediaFile;
 
-*/
+
 // ***************************************************************************************************
-//if (test == true)	// old 
+//if (test == true)	// old
 //	{
 //	Hide();
 //	incount=0;	// Comvert to Interleaved Stereo
@@ -1749,7 +1749,7 @@ maincount = 0;
 // --------------------------------------------------------//	8 BIT LOADERS
 // --------------------------------------------------------------------------
 	if (lbits == 8)
-		{			
+		{
 		if ((loadmode >= 0) && (loadmode <= 12)) quartval = 65535;
 		if ((loadmode >= 13) && (loadmode <= 16)) quartval = 131071;
 		quartlen = quartval;
@@ -2201,7 +2201,7 @@ if (type == 1)	// Old Save As
 	{
 	bufferstart = (void *)loadpoint;
 	len = (size_t)loadmemsize << 1;
-	
+
 	sa_afile = new BFile(new BDirectory(sa_aref),sa_filename[0], B_ERASE_FILE | B_CREATE_FILE | B_WRITE_ONLY);
 	test=sa_afile->IsWritable();
 
@@ -2235,7 +2235,7 @@ delete msg;
 delete_area(load_area);	// delete the area:
 }
 
-	
+
 // ***************************************************************************************************
 // ***************************************************************************************************
 // ***************************************************************************************************
@@ -2852,7 +2852,7 @@ if (test == true)
 // --------------------------------------------------------//	8 BIT SAVERS
 // --------------------------------------------------------------------------
 	if (sbits == 8)
-		{			
+		{
 		if ((loadmode >= 0) && (loadmode <= 12)) quartval = 65535;
 		if ((loadmode >= 13) && (loadmode <= 16)) quartval = 131071;
 		quartlen = quartval;
@@ -3310,7 +3310,7 @@ delete msg;
 delete_area(save_area);	// delete the area:
 }
 
-	
+
 // ***************************************************************************************************
 // ***************************************************************************************************
 // ***************************************************************************************************

@@ -7,17 +7,22 @@
 #include <List.h>
 
 
+// Predefinitions
+class BStringView;
+class BMenuItem;
+
+
 class SAMPLEWindow : public BWindow
 {
  public:
  	SAMPLEWindow();
 	~SAMPLEWindow(void);
-	
+
 /*****************************************************************/
 // Ai v4.0 Globals
 
-int32 wavebuf[15][251];        //  bufs are for calculation 
-int32 wavetemp[1001];           //  so is wavetemp 
+int32 wavebuf[15][251];        //  bufs are for calculation
+int32 wavetemp[1001];           //  so is wavetemp
 int16 complexbuf[65538];
 
 // Window numbers to check if they are open - probably have to be moved
@@ -30,10 +35,10 @@ int16 complexbuf[65538];
 
 int32 modtype[10];  // ???
 
-int32 result; //  this will store the result of any input  
-int32 value;  //  so will this 
+int32 result; //  this will store the result of any input
+int32 value;  //  so will this
 
-// Other variables 
+// Other variables
 
 //uint32 playing;   // sample playing = 1 WARNING! Check vars between class vars and globals in .cpp file
 
@@ -48,10 +53,10 @@ void *point;			// used for transfer from App
 int32 sammemsize;		// used for transfer from App
 int32 samhalfmemsize;	// used for transfer from App
 
-int32 makechans;        // no of chans in use     
-                        // 0=mono all 1=Left 2=Right 3=Both 
+int32 makechans;        // no of chans in use
+                        // 0=mono all 1=Left 2=Right 3=Both
 
-int32 split;             // Normal=0  Splitview=1  
+int32 split;             // Normal=0  Splitview=1
 
 int32 stop;              // ???
 
@@ -70,36 +75,36 @@ int32 viewheight;       // used for redrawing window
 int32 viewwidth;
 int32 viewzoom;
 
-uint32 samcount;   // counter 
+uint32 samcount;   // counter
 
-uint32 samstart;   // start of area 
-uint32 samend;     // end of area 
-uint32 samstartb;  // start of area for stereo 
-uint32 samendb;    // end of area for stereo 
-uint32 samstartL;  // start of area 
-uint32 samendL;    // end of area 
-uint32 samstartR;  // start of area for stereo 
-uint32 samendR;    // end of area for stereo 
-uint32 samlen;     // length of area to be processed 
+uint32 samstart;   // start of area
+uint32 samend;     // end of area
+uint32 samstartb;  // start of area for stereo
+uint32 samendb;    // end of area for stereo
+uint32 samstartL;  // start of area
+uint32 samendL;    // end of area
+uint32 samstartR;  // start of area for stereo
+uint32 samendR;    // end of area for stereo
+uint32 samlen;     // length of area to be processed
 
-uint32 memdiv;     // length/10 
-uint32 memdivtodo; // value to reach to update done box 
-uint32 done;       // valuse sent to Drawdonebox 
+uint32 memdiv;     // length/10
+uint32 memdivtodo; // value to reach to update done box
+uint32 done;       // valuse sent to Drawdonebox
 int16 drawbarside;// which side is being processed  1=left 2=right
 
 int32 scalelevel;   // value for scale on edit window
 
-int32 position;     // position pointer     NOW CALLED ZONES 
-int32 positionend;  // position end pointer 
-int32 positionlen;  // length of position 
-int32 poside;       // position side     
+int32 position;     // position pointer     NOW CALLED ZONES
+int32 positionend;  // position end pointer
+int32 positionlen;  // length of position
+int32 poside;       // position side
 
-int32 filmod[2][22][260]; // stores for 7 band EQ 
+int32 filmod[2][22][260]; // stores for 7 band EQ
 int32 filstor[2][22];     // more stores for 7 band EQ
 
-//int32 complextable;  //  0=none;  1=sin;     2=arcsin; 
-                       //  3=cos;   4=arccos;  5=tan;    
-                       //  6=tanh;  7=arctan;  8=cot;    
+//int32 complextable;  //  0=none;  1=sin;     2=arcsin;
+                       //  3=cos;   4=arccos;  5=tan;
+                       //  6=tanh;  7=arctan;  8=cot;
                        //  9=exp;   10=log;    11=sqrt;
                        //  May change these to individual tables
                        //  Will take ~1MB
@@ -134,7 +139,7 @@ area_id my_area; // memory allocated
 int32 samlistnumber;
 
 // Generates Error - Tell Cygnus
-//const BRect rect(4,23,793,450);  
+//const BRect rect(4,23,793,450);
 //
 
 char samtxt[50]; // Test message text
@@ -142,12 +147,12 @@ char samtxt[50]; // Test message text
 int32 comvals[5][22];
 
 //****************************************************************************************************
-	
-	
+
+
   	void MessageReceived(BMessage* msg);
 
 	static int ProduceNextBuffer(void *buffer, int numSamps);
-	
+
 	void Dodisplay(void);
 	void Doundo(int32 undo);
 	void Doeffect(void); // Calls Below
@@ -162,14 +167,14 @@ int32 comvals[5][22];
 	void Drawdonebox(uint32 done);
 	void Newdrawdonebox(int16 draw1, int16 draw2, int16 draw3, int16 draw4, int16 draw5, int16 draw6);
 	void Setcalcvals(void);
-	
+
 	// SAMPLE_fx1.cpp
 	void Zerorng(void);								// Zero selected Range
 	void Scalerng(void);							// Scale selected range
 	void Rescalerng(void);							// ReScale selected range
 	void Rescalenoboxrng(void);						// Rescale selected range, but no drawing into box
 	void Copyrng(int32 opt);						// Edit operations
-	
+
 	void Arithrng(int32 opt,int32 optb);			// Arithemitic Operations
 	void Invertrng(int32 opt,int32 optb);			// Invert + MANIPs
 	void Limitrng(int32 opt,int32 optb);			// Limit + MANIPs
@@ -215,10 +220,10 @@ int32 comvals[5][22];
 	void  DelayBackrng(int32 opt,int32 optb);		// Delay MANIPs
 	void  DelayMathsrng(int32 opt,int32 optb);		// Delay Maths CFX
 
-	
+
  private:
  	BStringView	*messageboxstring;
-	BMenuItem	*scaleItem; 	
+	BMenuItem	*scaleItem;
 
 	void Sendmess(int32 messno);
 	void FrameResized(float width, float height);
@@ -233,7 +238,7 @@ class SampleView : public BView
  public:
  int32 maxlen;
 
- 	// overridden BView functions 
+ 	// overridden BView functions
  	SampleView(BRect R);
  	void MouseDown(BPoint point);
 	void Draw(BRect updateRect);
